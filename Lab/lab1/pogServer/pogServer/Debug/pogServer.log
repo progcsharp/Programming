@@ -1,2 +1,3 @@
 ﻿  pogServer.cpp
+C:\Users\USER\Desktop\Programming\Lab\lab1\pogServer\pogServer\pogServer.cpp(74,20): warning C4018: <: несоответствие типов со знаком и без знака
   pogServer.vcxproj -> C:\Users\USER\Desktop\Programming\Lab\lab1\pogServer\Debug\pogServer.exe
