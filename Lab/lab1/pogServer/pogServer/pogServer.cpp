@@ -22,6 +22,7 @@ std::string informarion() {
 		"&exclude=" + exclude + "&appid=" + appid + "&units=" + units + "&lang=" + lang;
 
 	auto result = owm.Get(request.c_str());
+	std::cout << request;
 	
 
 	if (!result) {
@@ -63,11 +64,11 @@ std::string time_infa() {
 
 
 std::string parascha() {
+	std::string str;
+	json new_inf;
 	json ti = json::parse(time_infa());
 	json pi;
 	std::ifstream file_read("INFAoPOGODE.json");
-	std::string str;
-	json new_inf;
 	if (file_read.is_open()) {
 		getline(file_read, str, '\0');
 		pi = json::parse(str);
@@ -82,6 +83,7 @@ std::string parascha() {
 				break;
 			}
 		}
+
 	}
 
 	if (new_inf.size() > 0) {
@@ -105,7 +107,8 @@ std::string parascha() {
 
 std::string htmlsran() {
 	json j = json::parse(parascha());
-	
+	std::cout << "yes";
+
 	std::ifstream file_html("index.html");
 	std::string str;
 
@@ -125,6 +128,7 @@ std::string htmlsran() {
 
 	int i = str.find("{hourly[i].weather[0].icon}");
 	str.replace(i, 27, j[0]["icon"]);
+	
 	return str;
 
 }
@@ -139,6 +143,7 @@ void get_response_raw(const Request& req, Response& res) {
 
 void get_response(const Request& req, Response& res) {
 
+
 	res.set_content(htmlsran(), "text/html");
 
 }
@@ -147,6 +152,7 @@ int main() {
 	Server svr;
 	svr.Get("/", get_response);
 	svr.Get("/raw", get_response_raw);
+	std::cout << "Server...OK";
 	svr.listen("localhost", 2020);
 }
 

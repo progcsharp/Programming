@@ -41,4 +41,4 @@ temp.pack(expand=True)
 
 reload_data()
 root.mainloop()
-i = input()
+i=input()
