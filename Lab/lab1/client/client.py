@@ -4,11 +4,11 @@ import requests
 
 def reload_data(event=None):
 	try:
-		response = requests.get('http://localhost:2020/raw').content.decode("utf8")
+		response = requests.get('http://localhost:1234/raw').content.decode("utf8")
 		forecast_j = json.loads(response)
 
-		desc.config(text=str(forecast_j["description"]))
-		temp.config(text=str(round(forecast_j["temp"])) + "°C")
+		desc.config(text=str(forecast_j[0]["description"]))
+		temp.config(text=str(round(forecast_j[0]["temp"])) + "°C")
 	except requests.exceptions.ConnectionError:
 		pass
 

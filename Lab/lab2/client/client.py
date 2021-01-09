@@ -27,7 +27,7 @@ def index():
     req_time = datetime.datetime.now().time()
 
     req_j = request.get_json()
-    for item in req_j['cart']:
+    for item in req_j['check']:
         line = [
             next_id,
             req_j['user_id'],
