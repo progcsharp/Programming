@@ -162,8 +162,7 @@ int main() {
 	</code>
 </p>
 <p>
-	Код клиента:
-	<code>
+	Код клиента:</p>
 	'''python
 		from tkinter import *
 import json
@@ -200,9 +199,6 @@ temp.pack(expand=True)
 reload_data()
 root.mainloop()
 '''
-	</code>
-
-</p>
 
 <p>
 	скриншот клиента
