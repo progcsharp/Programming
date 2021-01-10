@@ -163,7 +163,7 @@ int main() {
 </p>
 <p>
 	Код клиента:</p>
-	'''python
+	```python
 		from tkinter import *
 import json
 import requests
@@ -198,7 +198,7 @@ desc.pack(pady=0)
 temp.pack(expand=True)
 reload_data()
 root.mainloop()
-'''
+```
 
 <p>
 	скриншот клиента
