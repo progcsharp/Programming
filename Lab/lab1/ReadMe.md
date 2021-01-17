@@ -207,11 +207,15 @@ root.mainloop()
 скриншот клиента:
 
 ![](https://sun9-65.userapi.com/impg/g2XS8MqF-N1R7nEkR4QAS3djpMpaJvEed5GfGw/8Jy7DzTkpv8.jpg?size=211x283&quality=96&proxy=1&sign=9e6e33dcfab6e872d0605eab21c4cc37)
+
 Рис 1 окно клиента
+
+
 
 скриншот сервера:
 
 ![](https://sun9-5.userapi.com/impg/2gWEbG5ue3jJLxDU4PKWKjnddNN21atjG2ODOg/PqfQad8NddI.jpg?size=445x183&quality=96&proxy=1&sign=12e7a35a5119746304018174e991a0de)
+
 Рис 2 скриншот работы сервера
 
 ## Вывод по работе.
