@@ -4,11 +4,10 @@
 ФИЗИКО-ТЕХНИЧЕСКИЙ ИНСТИТУТ<br>
 Кафедра компьютерной инженерии и моделирования</p>
 <br>
-<h3 align="center">Отчёт по лабораторной работе № X<br> по дисциплине "Программирование"</h3>
+<h3 align="center">Отчёт по лабораторной работе № 2<br> по дисциплине "Программирование"</h3>
 <br><br>
-<p>студента 1 курса группы ПИ-б-о-203(1)<br>
-Сайдалиев Артур Ридванович<br>
-направления подготовки 09.03.0X "программная инженерия"</p>
+<p>студента 1 курса группы ПИ-б-о-203(1)<br>Сайдалиев Артур Ридванович<br>
+направления подготовки 09.03.04 "Программная инженерия"</p>
 <br><br>
 <table>
 <tr><td>Научный руководитель<br> старший преподаватель кафедры<br> компьютерной инженерии и моделирования</td>
@@ -20,41 +19,37 @@
 <p align="center">Симферополь, 2020</p>
 <hr>
 
-<h2 align="center">
-	ПОСТАНОВКА ЗАДАЧИ
-</h2>
+## Цель
+1. Получить представления о структуре post-запроса;
+2. Изучить webhooks как метод взаимодействия web-приложений;
 
-<p align="center">Разработайте и зарегистрируйте навык для Алисы на сервисе ЯндексюДиалоги;
+## Постановка задачи
 
-В качестве backend-a для навыка реализуйте приложение на языке С++ выполняющее следующие функции:
+Разработать и зарегистрировать навык для Алисы на сервисе Яндекс.Диалоги;
 
-Составление продуктовой корзины:
+В качестве backend-a для навыка реализовать приложение на языке С++ выполняющее следующие функции:
 
-Добавление продукта в корзину;
-Удаление продукта из корзины;
-Очистка корзины;
-Вывод списка товаров в корзине;
-Подсчёт стоимости товаров в корзине.
-Вывод справочной информации по навыку;
+- Составление продуктовой корзины:
+    - Добавление продукта в корзину;
+    - Удаление продукта из корзины;
+    - Очистка корзины;
+    - Вывод списка товаров в корзине;
+    - Подсчёт стоимости товаров в корзине.
 
-Регистрацию webhook-ов сторонних сервисов;
+- Вывод справочной информации по навыку;
 
-Отправку данных на сторонние сервисы. 
+- Регистрацию webhook-ов сторонних сервисов;
 
-В качестве стороннего сервиса реализуйте приложение на языке Python выполняющее следующие функции:
+- Отправку данных на сторонние сервисы.
 
-Ожидание данных о покупке;
-Сохранение поступивших данных в excel-документ.
-Подробности указаны далее.</p>
+В качестве стороннего сервиса реализовать приложение на языке Python, выполняющее следующие функции:
+    Ожидание данных о покупке;
+    Сохранение поступивших данных в excel-документ.
 
-<h2>
-	Выполнение работы
-</h2>
-<br>
-<p>
-	Для начала я настроил навык для Алисы. Название навыка видно на скриншоте
-</p>
-<img src="https://sun9-71.userapi.com/impg/UHQ_fIUmVZ4icMhTO1Fz9645LbCUsM-OSNqt_A/ZM1OK4BqowU.jpg?size=1920x1080&quality=96&proxy=1&sign=7122f94582a238fbaa4017869330eecc&type=album">
+## Выполнение работы
+
+В начале работы был создан навык на странице яндекса. Название было выбрано лаконичное, чётко отражающее суть навыка -- "Корзина".
+![](https://sun9-71.userapi.com/impg/UHQ_fIUmVZ4icMhTO1Fz9645LbCUsM-OSNqt_A/ZM1OK4BqowU.jpg?size=1920x1080&quality=96&proxy=1&sign=7122f94582a238fbaa4017869330eecc&type=album)
 
 <br><br>
 
@@ -77,10 +72,11 @@
 </p>
 
 <br><hr>
-<p>
-	Исходный код серверного приложения: 
-	<code>
-		#include <iostream>
+	Исходный код серверного приложения:
+
+```cpp
+
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <fstream>
@@ -147,7 +143,7 @@ std::string File_parse(std::string FileName) {
 void delet(std::string link) {
     json conf = config();
 
-  
+
 
     int leng = count();
     for (int i = 0; i < leng; i++)
@@ -158,7 +154,7 @@ void delet(std::string link) {
             conf_file << conf;
         }
     }
-    
+
 }
 
 void Sett(std::string set) {
@@ -166,7 +162,7 @@ void Sett(std::string set) {
 
     std::ofstream File_config("config.json");
 
-   
+
     conf["webhooks"].push_back(set);
 
     File_config <<  conf;
@@ -205,7 +201,7 @@ std::string basket(json req) {
     i += 1;
     json j = json::parse(File_parse("check.json"));
     j["user_id"] = req["session"]["user"]["user_id"];
-    json s = { 
+    json s = {
         {"item", req["request"]["nlu"]["tokens"][3]},
         {"price", req["request"]["nlu"]["entities"][0]["value"]}
        };
@@ -291,7 +287,7 @@ void end_of_purchase() {
             std::cout << "Error code: " << err << std::endl;
         }
     }
-    
+
 }
 
 
@@ -300,7 +296,7 @@ std::string answer(std::string command , json req) {
     std::string tts;
     std::string text;
     json help_state_buttons = {
-        
+
     {
         {"title", u8"Корзина"},
         {"hide", true}
@@ -339,7 +335,7 @@ std::string answer(std::string command , json req) {
             {"hide",true}
         },
         {
-        
+
             {"title", u8"Выйти из этого режима"},
             {"hide", true}
         }
@@ -406,19 +402,19 @@ std::string answer(std::string command , json req) {
     else if(mode == 2)
     {
         if (req["request"]["nlu"]["tokens"][0] == u8"добавь") {
-            
+
             basket(req);
             text = u8"Добавлено";
             if (tts_bool) {
                 tts = u8"добавлено";
             }
-            else 
+            else
             {
                 tts = "";
             }
 
         }
-        else if (req["request"]["nlu"]["tokens"][0] == u8"удалить") 
+        else if (req["request"]["nlu"]["tokens"][0] == u8"удалить")
         {
             if (i != 0) {
                 std::string d = del(req);
@@ -455,7 +451,7 @@ std::string answer(std::string command , json req) {
                     tts = "";
                 }
             }
-            
+
 
         }
         else if (command == u8"очистить корзину") {
@@ -564,7 +560,7 @@ void gen_response(const Request& req, Response& res) {
 }
 
 void gen_response_webhooks(const Request& req, Response& res){
-     
+
     if (req.has_param("del")) {
         delet(req.get_param_value("del"));
     }
@@ -593,11 +589,11 @@ void post_respons(const Request& req, Response& res) {
 
 
     }
-    else 
+    else
     {
 
         str = answer(j["request"]["command"], j);
-       
+
     }
      res.set_content(str, "application/json; charset=UTF-8");
 }
@@ -606,7 +602,7 @@ void test() {
     json j = json::parse(File_parse("check.json"));
     j["user_id"] = "svsvd";
     json s = { {"id","sdvsddsdsdv"} };
-    j["check"].push_back(s); 
+    j["check"].push_back(s);
     std::ofstream Check_File("check.json");
 
     Check_File << j;
@@ -620,14 +616,12 @@ int main() {
      std::cout << "Start server... OK\n";
      svr.listen("localhost", 1234);
 }
-	</code>
-</p>
+```
 
-<br><hr>
-<p>
+
 	Исходный код клиентского приложения:
-	<code>
-		import openpyxl
+```python
+import openpyxl
 import datetime
 import json
 import os.path
@@ -639,7 +633,7 @@ def write_from_buf():
     global buf, next_line
     book = openpyxl.load_workbook('data.xlsx')
     sheet = book.active
-    
+
     for line in buf:
         for i in range(5):
             sheet.cell(next_line, i + 1).value = line[i]
@@ -699,5 +693,4 @@ if __name__ == "__main__":
         book.close
 
     app.run()
-	</code>
-</p>
+```
