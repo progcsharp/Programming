@@ -61,12 +61,10 @@
 
 <img src="https://sun9-48.userapi.com/impg/KFt5DvbWXdkPPT7dErpWGJDp1UE4l61Qs-wb1g/WQtd69dBCCU.jpg?size=1374x649&quality=96&proxy=1&sign=1ecbd292e23edefa51d3491fd05a8214&type=album">
 Рис 2 проверка работоспособности Алисы
-
-
 <img src="https://sun9-11.userapi.com/impg/NsDnH_GxwifgAKTkFU1bN_hqGzF0xWUYVhflsw/nGhdHKk234Y.jpg?size=1371x612&quality=96&proxy=1&sign=6926492e5a614c8bf12482e092f4849b&type=album">
 Рис 3 проверка работоспособности Алисы
 
-<br>
+
 
 <p>
 	Далее я создаю сайт для регистрации Webhook ,находиться он по пути "/Webhooks" .Регистриру. на сайте клиенское приложение.
@@ -75,7 +73,7 @@
 <img src="https://sun9-74.userapi.com/impg/O9t0vPzJYobIDB_8pQEBw8C4j2NlISc3zRxgiA/DH5yWtniI5k.jpg?size=1920x1080&quality=96&proxy=1&sign=e21ea37ead116d4731b81e67b13c365a&type=album">
 Рис 4 сайт с Webhook
 
-<br>
+
 <p>
 	При работе клиенского приложения ,был создан exel-файл ,он находится в папку с клиенским приложением .
 </p>
