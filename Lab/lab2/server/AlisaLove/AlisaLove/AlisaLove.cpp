@@ -193,7 +193,7 @@ void end_of_purchase() {
     {
         str = conf["webhooks"][i];
         Client cli(str.c_str());
-        auto res = cli.Post("/85d9efd0-eec7-4f11-9bdc-1b290298c0ef", to_string(check), "application/json");
+        auto res = cli.Post("/", to_string(check), "application/json");
         if (res) {
             // Проверяем статус ответа, т.к. может быть 404 и другие
             if (res->status == 200) {
